@@ -7,15 +7,22 @@ import random
 import json
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import psycopg2
+import os
+
+
 
 
 
 app = Flask(__name__)
 app.secret_key = "randomstring"
 # Это создаст базу в оперативной памяти, которая очистится после завершения программы.
-app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql+psycopg2://postgres:Vovik20121985@localhost/for_second_stepic"
+app.config["SQLALCHEMY_DATABASE_URI"] ="postgres://mcvlpttbsclhsb:491018cf1a9511aacd19b93665d08cbb338f5649acade8a8f1ff7e8f100e109e@ec2-54-225-190-241.compute-1.amazonaws.com:5432/d3cnottaasadp0"
+  #  "postgresql+psycopg2://postgres:Vovik20121985@localhost/for_second_stepic"
 ####app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+print(os.environ.get("DATABASE_URL"))
+print(os.environ.get('HOME'))
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -59,9 +66,6 @@ class Goals(db.Model):
     name_in_russian = db.Column(db.String)
 
 
-teacher_11 = db.session.query(Teacher).get(2)
-print("study1" in teacher_11.goals)
-
 teachs = Teacher.query.all()
 
 def filling_data_from_database(teachs):
@@ -81,15 +85,6 @@ def filling_data_from_database(teachs):
 
 teachers = filling_data_from_database(teachs)
 
-teachs_1 = Teacher.goals.contains("study")
-teachs_1 = db.session.query(Teacher.goals.contains("study"))
-
-teachs_1 =Teacher.query.filter(Teacher.goals.contains("study"))
-
-
-
-for teach in teachs_1:
-    print(teach.name)
 
 
 
