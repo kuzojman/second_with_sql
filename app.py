@@ -17,7 +17,8 @@ import os
 app = Flask(__name__)
 app.secret_key = "randomstring"
 # Это создаст базу в оперативной памяти, которая очистится после завершения программы.
-app.config["SQLALCHEMY_DATABASE_URI"] ="postgres://qizllymyyraymu:a7d672dfe0d3a5b3cfd838e60bb08779900fe7e1f322861740efa821b02e513f@ec2-34-194-215-27.compute-1.amazonaws.com:5432/d53vfa2588029"
+app.config["SQLALCHEMY_DATABASE_URI"] ="postgres://ccgivigwjxbere:1bfedd860f5c35f65c9a0d4b83338fa773435bab7e6abd239995eb665d7525ee@ec2-34-192-58-41.compute-1.amazonaws.com:5432/dckeb4ijeh54v1"
+
   #  "postgresql+psycopg2://postgres:Vovik20121985@localhost/for_second_stepic"
 ####app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
